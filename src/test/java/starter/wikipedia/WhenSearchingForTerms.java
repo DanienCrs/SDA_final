@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SerenityJUnit5Extension.class)
@@ -40,6 +42,7 @@ class WhenSearchingForTerms {
     void searchBySingleKeyword() {
         navigate.toTheHomePage();
         search.searchBy("Everest");
+       // TimeUnit.SECONDS.sleep(10l);
         Serenity.reportThat("The first heading should be 'Mount Everest'",
                 () -> assertThat(displayedArticle.getFirstHeading()).isEqualTo("Mount Everest")
         );
